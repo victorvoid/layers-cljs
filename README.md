@@ -1,6 +1,12 @@
-# my re-frame
+# layers-cljs
 
-A [re-frame](https://github.com/Day8/re-frame) template.
+An example in ClojureScript using 4 layers architecture
+
+1. data
+2. handlers
+3. hooks(TODO)
+4. props-mapper
+
 
 ## Development Mode
 
@@ -22,13 +28,13 @@ Navigate to a clojurescript file and start a figwheel REPL with `cider-jack-in-c
 Compile css file once.
 
 ```
-lein garden once
+lein less once
 ```
 
 Automatically recompile css file on change.
 
 ```
-lein garden auto
+lein less auto
 ```
 
 ### Run application:
@@ -42,26 +48,7 @@ Figwheel will automatically push cljs changes to the browser.
 
 Wait a bit, then browse to [http://localhost:3449](http://localhost:3449).
 
-### Run tests:
-
-Install karma and headless chrome
-
-```
-npm install -g karma-cli
-npm install karma karma-cljs-test karma-chrome-launcher --save-dev
-```
-
-And then run your tests
-
-```
-lein clean
-lein doo chrome-headless test once
-```
-
-Please note that [doo](https://github.com/bensu/doo) can be configured to run cljs.test in many JS environments (phantom, chrome, ie, safari, opera, slimer, node, rhino, or nashorn).
-
 ## Production Build
-
 
 To compile clojurescript to javascript:
 
