@@ -1,12 +1,12 @@
-(ns routes
-  (:require-macros [secretary.core :refer [defroute]])
+(ns layers-cljs.routes
   (:import goog.History)
   (:require
    [secretary.core :as secretary]
    [goog.events :as gevents]
    [goog.history.EventType :as EventType]
    [re-frame.core :as re-frame]
-   [events :as events]))
+   [layers-cljs.utils :refer [|> redirect!]]
+   [layers-cljs.events :as events]))
 
 (defn hook-browser-navigation! []
   (doto (History.)
@@ -18,7 +18,11 @@
 
 (defn app-routes []
   (secretary/set-config! :prefix "#")
-  (defroute "/" []
-    (re-frame/dispatch [::events/set-active-panel :home-panel]))
+
+  (secretary/defroute "/" {:as params}
+    (|> [::events/set-active-page :home-page]))
+
+  (secretary/defroute "*" []
+    (redirect! "/"))
 
   (hook-browser-navigation!))
